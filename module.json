@@ -1,0 +1,38 @@
+{
+  "name":"DMX Sequence Player",
+  "type":"DMX",
+  "path":"Protocol",
+  
+  "version":"1.0.0",
+  "description":"Play sequence with DMX",
+  "url":"https://github.com/norbertrostaing/dmxSequencePlayerChataigne",
+  "downloadURL":"https://github.com/norbertrostaing/dmxSequencePlayerChataigne/archive/master.zip",
+
+  "hasInput":true,
+  "hasOutput":true, 
+
+  "hideDefaultCommands":false,
+  
+
+  "defaults":
+  {	
+    "dmxType":"Art-Net",
+    "artNet":
+    {
+      "input" : 
+      {
+        "enabled":true
+      },
+      "output" : 
+      {
+        "enabled":false
+      }
+    }
+  },
+
+  "scripts": 
+  [
+    "dmxSequencePlayer.js"
+  ],
+
+}
