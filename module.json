@@ -4,7 +4,7 @@
   "path":"Protocol",
   
   "version":"1.0.0",
-  "description":"Play sequence with DMX",
+  "description":"Use a DMX universe to play sequences in chataigne. Each channel controls one sequence, 0 is stop, 1 is pause, then its volume.",
   "url":"https://github.com/norbertrostaing/dmxSequencePlayerChataigne",
   "downloadURL":"https://github.com/norbertrostaing/dmxSequencePlayerChataigne/archive/master.zip",
 
