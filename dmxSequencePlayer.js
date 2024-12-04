@@ -122,16 +122,16 @@ function moduleValueChanged(value)
 					var seq = sequences[index];
 					var v = value.get();
 					var vol = 0;
-					if (v == 0) {
+					if (v < 5) {
 						seq.stop.trigger();
 					}
-					else if (v == 1) {
+					else if (v < 10) {
 						seq.pause.trigger();
 					} else {
 						if (!seq.isPlaying.get()) {
 							seq.play.trigger();
 						}
-						vol = (v-2)/253;
+						vol = (v-10)/245;
 					}
 					var layers = seq.layers.getItems();
 					for (var iLayer = 0; iLayer < layers.length; iLayer++) {
