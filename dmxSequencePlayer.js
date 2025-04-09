@@ -13,6 +13,8 @@ dmxInput.setAttribute ("searchLevel",1);
 
 var firstDmxAdress = script.addIntParameter("DMX Address", "Address", 1, 1, 512);
 
+var shouldBePlaying = [];
+
 // You can add custom parameters to use in your script here, they will be replaced each time this script is saved
 //var myFloatParam = script.addFloatParameter("My Float Param","Description of my float param",.1,0,1); 		//This will add a float number parameter (slider), default value of 0.1, with a range between 0 and 1
 
@@ -119,16 +121,20 @@ function moduleValueChanged(value)
 				script.log(index);
 				var sequences = root.sequences.getItems();
 				if (index >= 0 && index < sequences.length) {
+					initIsPlaying(index);
 					var seq = sequences[index];
 					var v = value.get();
 					var vol = 0;
 					if (v < 5) {
 						seq.stop.trigger();
+						shouldBePlaying[index] = false;
 					}
 					else if (v < 10) {
 						seq.pause.trigger();
+						shouldBePlaying[index] = false;
 					} else {
-						if (!seq.isPlaying.get()) {
+						if (!seq.isPlaying.get() && !shouldBePlaying[index]) {
+							shouldBePlaying[index] = true;
 							seq.play.trigger();
 						}
 						vol = (v-10)/245;
@@ -153,3 +159,8 @@ function moduleValueChanged(value)
 	}
 }
 
+function initIsPlaying(id) {
+	while (shouldBePlaying.length <= id) {
+		shouldBePlaying.push(false);
+	}
+}
